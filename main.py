@@ -314,7 +314,6 @@ while index_game < 6:
                     player_image = direct_move()
                     map.process_input(event.key)
                     process_ques(map, event.key)
-                    print(level_next)
                     if check_won(map):
                         if level_next > 1:
                             done = True
