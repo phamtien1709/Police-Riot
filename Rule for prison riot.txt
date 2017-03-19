@@ -1,0 +1,33 @@
+intro:
+      -In a rainy day,at a Federal prison, where the most dangerous criminals are locked up,....
+A riot happened, the police are killed brutally.
+      ......
+-You are the only survivor,....
+-Escape the prison .....
+OR SUFFER THE SAME FATE LIKE OTHERS !!!!!!!
+
+
+if right:
+ Well, you are pretty good at this .-.
+ Let's see if you can escape next level >>>:))))
+
+if lose:
+ CONGRATS ON DYING BRUTALY!!!
+ Seems like you are the reason why god created the middle finger :v
+ Don't you have brain ??? Then use it !!!!
+
+
+
+Begin:
+  ________shall we begin ?________
+
+
+
+
+
+
+Rules:
+The games is pretty simple, you will act as a last police in a prison, your job is to get out of there by all cost.
+There will be 3 levels, each levels will have questions that you must answer in order to get out.
+That's all, Have fun and DO NOT USE GOOGLE because you will find nothing >>:)
+____________Thank you for your support!!!!!!!_________________ 
