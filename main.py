@@ -20,9 +20,6 @@ class TimeModel:
         self.x = x
         self.y = y
 
-clock_model = TimeModel(50, 50)
-blood_model = TimeModel(695, 50)
-
 
 def direct_move():
     if event.key == pygame.K_RIGHT:
@@ -235,11 +232,6 @@ def check_lost(map):
                     return True
     return False
 
-done = False
-global done
-
-level_next = 0
-
 
 def check_won(map):
     global next_level, level_next
@@ -262,6 +254,11 @@ def check_won(map):
         return True
     return False
 
+done = False
+global done
+clock_model = TimeModel(50, 50)
+blood_model = TimeModel(695, 50)
+level_next = 0
 ques_input = init_ques()
 map_input = init_map(level_next)
 map = Map(map_input, ques_input)
@@ -270,11 +267,9 @@ replay = False
 done = False
 next_level = False
 timer_count = 0
-
 list_intro = [story_1_images, story_2_images, story_3_images, avatar_images, ruler_images]
 sound = pygame.mixer.Sound("Sounds/sound.wav")
 pygame.mixer.Sound.play(sound)
-
 index_game = 0
 while index_game < 6:
     index_image = 0
