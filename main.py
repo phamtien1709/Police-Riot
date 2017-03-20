@@ -121,8 +121,9 @@ def show_ques(ques):
     your_answer = myfont_answer.render("YOUR ANSWER", 1, COLOR_WHITE)
     you_sure = myfont.render("ARE YOU SURE? PRESS [Y] or [N]", 1, COLOR_WHITE)
 
-    def process_show_ques():
-        screen.blit(bg_ques_image[0], (0, 100))
+    ques_index = random.randint(0, 2)
+    def process_show_ques(ques_index):
+        screen.blit(bg_ques_image[ques_index], (0, 100))
         for i in range(len(content)):
             screen.blit(content[i], (80, 215+i*25))
         screen.blit(choice_a, (90, 390))
@@ -130,7 +131,7 @@ def show_ques(ques):
         screen.blit(choice_c, (90, 455))
         screen.blit(choice_d, (365, 455))
         screen.blit(your_answer, (40, 120))
-    process_show_ques()
+    process_show_ques(ques_index)
     pygame.display.flip()
 
     answer = "..."
@@ -153,7 +154,7 @@ def show_ques(ques):
                     break
                 else:
                     continue
-            process_show_ques()
+            process_show_ques(ques_index)
             answer_image = myfont_answer.render(answer, 1, COLOR_WHITE)
             screen.blit(answer_image, (205, 120))
             screen.blit(you_sure, (40, 150))
@@ -320,7 +321,8 @@ while index_game < 6:
                             done = True
                     if check_lost(map):
                         if replay:
-                            map = map2
+                            map_input = init_map(level_next)
+                            map = Map(map_input, ques_input)
                         else:
                             done = True
             timer_count += 1
