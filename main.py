@@ -98,6 +98,7 @@ def print_game(map):
                 screen.blit(ques_image, (200 + (x * square_size), 100 + (y * square_size)))
     pygame.display.flip()
 
+
 def revert_content(content):
     step = 0
     b = []
@@ -219,9 +220,6 @@ def check_lost(map):
                 if map.boss.match(next_px, next_py):
                     screen.fill(COLOR_WHITE)
                     screen.blit(game_lost_image, (0, 100))
-                    myfont = pygame.font.SysFont("Arial Rounded MT Bold", 15)
-                    replay_image = myfont.render("YOU DIED!!DO YOU WANT TO REPLAY??? [Y] or [N]", 1, COLOR_BLACK)
-                    screen.blit(replay_image, (25, 550))
                     pygame.display.flip()
                     done = False
                     while not done:
@@ -248,9 +246,6 @@ def check_won(map):
     if map.door_win.match(map.player.x, map.player.y):
         screen.fill(COLOR_WHITE)
         screen.blit(game_win_image, (0, 100))
-        myfont = pygame.font.SysFont("Arial Rounded MT Bold", 15)
-        continue_image = myfont.render("DO YOU WANT TO NEXT LEVEL??? [Y] or [N]", 1, COLOR_BLACK)
-        screen.blit(continue_image, (25, 450))
         pygame.display.flip()
         done = False
         while not done:
@@ -276,28 +271,33 @@ done = False
 next_level = False
 timer_count = 0
 
-list_intro = [story_1_image, story_2_image, story_3_image, avatar_image, ruler_image]
+list_intro = [story_1_images, story_2_images, story_3_images, avatar_images, ruler_images]
 sound = pygame.mixer.Sound("Sounds/sound.wav")
 pygame.mixer.Sound.play(sound)
 
 index_game = 0
 while index_game < 6:
+    index_image = 0
     if index_game == 3:
-        screen.blit(avatar_image, [0, 0])
-        pygame.display.flip()
         done = False
         while not done:
+            screen.blit(list_intro[index_game][index_image], [0, 0])
+            pygame.display.flip()
+            clock.tick(2)
+            index_image = (index_image + 1) % 2
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     done = True
                 elif event.type == pygame.KEYDOWN:
                     done = True
     elif index_game == 4:
-        screen.fill(COLOR_BLACK)
-        screen.blit(ruler_image, [0, 100])
-        pygame.display.flip()
         done = False
         while not done:
+            screen.fill(COLOR_BLACK)
+            screen.blit(list_intro[index_game][index_image], [0, 100])
+            pygame.display.flip()
+            clock.tick(2)
+            index_image = (index_image + 1) % 2
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     done = True
@@ -341,13 +341,15 @@ while index_game < 6:
             screen.blit(clock_image, (clock_model.x, clock_model.y))
             screen.blit(blood_image, (blood_model.x, blood_model.y))
             print_game(map)
-            clock.tick(80)
+            clock.tick(60)
             pygame.display.flip()
     else:
-        screen.blit(list_intro[index_game], (0, 50))
-        pygame.display.flip()
         done = False
         while not done:
+            screen.blit(list_intro[index_game][index_image], (0, 50))
+            pygame.display.flip()
+            clock.tick(2)
+            index_image = (index_image + 1) % 2
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     done = True
