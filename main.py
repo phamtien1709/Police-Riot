@@ -1,5 +1,4 @@
-import pygame
-
+import random
 from models.map import Map
 from models.wall import Wall
 from views.image_all import *
@@ -123,7 +122,7 @@ def show_ques(ques):
     you_sure = myfont.render("ARE YOU SURE? PRESS [Y] or [N]", 1, COLOR_WHITE)
 
     def process_show_ques():
-        screen.blit(bg_ques_image, (0, 100))
+        screen.blit(bg_ques_image[0], (0, 100))
         for i in range(len(content)):
             screen.blit(content[i], (80, 215+i*25))
         screen.blit(choice_a, (90, 390))
@@ -154,7 +153,6 @@ def show_ques(ques):
                     break
                 else:
                     continue
-
             process_show_ques()
             answer_image = myfont_answer.render(answer, 1, COLOR_WHITE)
             screen.blit(answer_image, (205, 120))
