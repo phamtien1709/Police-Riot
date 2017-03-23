@@ -261,8 +261,8 @@ level_next = 0
 ques_input = init_ques()
 map_input = init_map(level_next)
 map = Map(map_input, ques_input)
-map2 = Map(map_input, ques_input)
 replay = False
+back_menu = False
 done = False
 next_level = False
 timer_count = 0
@@ -324,6 +324,9 @@ while index_game < 6:
                             map_input = init_map(level_next)
                             map = Map(map_input, ques_input)
                         else:
+                            index_game = 2
+                            map_input = init_map(0)
+                            map = Map(map_input, ques_input)
                             done = True
             timer_count += 1
             if timer_count >= 10:
