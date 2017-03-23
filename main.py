@@ -166,6 +166,7 @@ def finish_ques(map, index_ques, result, request):
     if result:
         del map.ques[index_ques]
         done = False
+        true_eff.play(0)
         while not done:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -178,6 +179,7 @@ def finish_ques(map, index_ques, result, request):
         del map.ques[index_ques]
         map.wall.append(Wall(map.player.x, map.player.y))
         done = False
+        false_eff.play(0)
         while not done:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -214,7 +216,8 @@ def check_lost(map):
             if dx*dy == 0:
                 next_px, next_py = map.player.calc_next(dx, dy)
                 if map.boss.match(next_px, next_py):
-                    screen.fill(COLOR_WHITE)
+                    screen.fill(COLOR_BLACK)
+                    lose_eff.play(0)
                     screen.blit(game_lost_image, (0, 100))
                     pygame.display.flip()
                     done = False
@@ -236,6 +239,7 @@ def check_won(map):
     global next_level, level_next
     if map.door_win.match(map.player.x, map.player.y):
         screen.fill(COLOR_WHITE)
+        win_eff.play(0)
         screen.blit(game_win_image, (0, 100))
         pygame.display.flip()
         done = False
@@ -269,6 +273,10 @@ timer_count = 0
 list_intro = [story_1_images, story_2_images, story_3_images, avatar_images, ruler_images]
 sound = pygame.mixer.Sound("Sounds/sound.wav")
 pygame.mixer.Sound.play(sound)
+true_eff = pygame.mixer.Sound("Sounds/True.wav")
+false_eff = pygame.mixer.Sound("Sounds/False.wav")
+win_eff = pygame.mixer.Sound("Sounds/win_level.wav")
+lose_eff = pygame.mixer.Sound("Sounds/lose_level.wav")
 index_game = 0
 while index_game < 6:
     index_image = 0
@@ -309,7 +317,7 @@ while index_game < 6:
                     map.process_input(event.key)
                     process_ques(map, event.key)
                     if check_won(map):
-                        if level_next > 1:
+                        if level_next > 2:
                             done = True
                         if next_level:
                             map_input = init_map(level_next)

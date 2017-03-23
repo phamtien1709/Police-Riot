@@ -1,4 +1,4 @@
-import  pygame
+import pygame
 
 player_right_image = pygame.image.load("images/police man/police_right.png")
 player_left_image = pygame.image.load("images/police man/police_left.png")
@@ -13,7 +13,7 @@ bg_ques_image3 = pygame.image.load("images/ques_3.png")
 bg_ques_image = [bg_ques_image1, bg_ques_image2, bg_ques_image3]
 door_win_image = pygame.image.load("images/door_win.png")
 plattform_image = pygame.image.load("images/plattform.jpg")
-game_lost_image = pygame.image.load("images/murder.jpg")
+game_lost_image = pygame.image.load("images/kill.jpg")
 game_win_image = pygame.image.load("images/victory.jpg")
 story_1_image = pygame.image.load("images/story_1.jpg")
 story_1_anim_image = pygame.image.load("images/story_1_anim.jpg")
@@ -34,3 +34,4 @@ clock_image = pygame.image.load("images/clock.png")
 blood_image = pygame.image.load("images/blood.png")
 pass_target_image = pygame.image.load("images/pass_target.png")
 fail_target_image = pygame.image.load("images/failded_target.png")
+

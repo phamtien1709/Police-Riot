@@ -131,7 +131,7 @@ C.Green
 D.Yellow
 a
 How Many Teeth Does the Average Person Have?
-A.26	
+A.26
 B.28
 C.30
 D.32
