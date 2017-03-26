@@ -250,7 +250,8 @@ def check_won(map):
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_y:
                         next_level = True
-                        level_next += 1
+                        if level_next < 2:
+                            level_next += 1
                         return next_level, level_next
                     elif event.key == pygame.K_n:
                         done = True
@@ -272,7 +273,7 @@ next_level = False
 timer_count = 0
 list_intro = [story_1_images, story_2_images, story_3_images, avatar_images, ruler_images]
 sound = pygame.mixer.Sound("Sounds/sound.wav")
-pygame.mixer.Sound.play(sound)
+sound.play(-1)
 true_eff = pygame.mixer.Sound("Sounds/True.wav")
 false_eff = pygame.mixer.Sound("Sounds/False.wav")
 win_eff = pygame.mixer.Sound("Sounds/win_level.wav")
@@ -318,6 +319,20 @@ while index_game < 6:
                     process_ques(map, event.key)
                     if check_won(map):
                         if level_next > 2:
+                            next_level = False
+                            done = False
+                            while not done:
+                                screen.blit(win_image, (0, 0))
+                                pygame.display.flip()
+                                for event in pygame.event.get():
+                                    if event.type == pygame.QUIT:
+                                        done = True
+                                    elif event.type == pygame.KEYDOWN:
+                                        done = True
+                                        break
+                            index_game = 2
+                            map_input = init_map(0)
+                            map = Map(map_input, ques_input)
                             done = True
                         if next_level:
                             map_input = init_map(level_next)
@@ -347,7 +362,7 @@ while index_game < 6:
             screen.blit(clock_image, (clock_model.x, clock_model.y))
             screen.blit(blood_image, (blood_model.x, blood_model.y))
             print_game(map)
-            clock.tick(60)
+            clock.tick(50)
             pygame.display.flip()
     else:
         done = False

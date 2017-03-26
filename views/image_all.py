@@ -34,4 +34,5 @@ clock_image = pygame.image.load("images/clock.png")
 blood_image = pygame.image.load("images/blood.png")
 pass_target_image = pygame.image.load("images/pass_target.png")
 fail_target_image = pygame.image.load("images/failded_target.png")
+win_image = pygame.image.load("images/win.jpg")
 
