@@ -278,6 +278,7 @@ true_eff = pygame.mixer.Sound("Sounds/True.wav")
 false_eff = pygame.mixer.Sound("Sounds/False.wav")
 win_eff = pygame.mixer.Sound("Sounds/win_level.wav")
 lose_eff = pygame.mixer.Sound("Sounds/lose_level.wav")
+win_all_eff = pygame.mixer.Sound("Sounds/win.wav")
 index_game = 0
 while index_game < 6:
     index_image = 0
@@ -324,6 +325,7 @@ while index_game < 6:
                             while not done:
                                 screen.blit(win_image, (0, 0))
                                 pygame.display.flip()
+                                win_all_eff.play(0)
                                 for event in pygame.event.get():
                                     if event.type == pygame.QUIT:
                                         done = True
