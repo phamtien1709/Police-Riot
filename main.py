@@ -249,9 +249,9 @@ def check_won(map):
                     done = True
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_y:
-                        next_level = True
-                        if level_next < 2:
+                        if level_next < 3:
                             level_next += 1
+                            next_level = True
                         return next_level, level_next
                     elif event.key == pygame.K_n:
                         done = True
@@ -269,7 +269,7 @@ map = Map(map_input, ques_input)
 replay = False
 back_menu = False
 done = False
-next_level = False
+next_level = 0
 timer_count = 0
 list_intro = [story_1_images, story_2_images, story_3_images, avatar_images, ruler_images]
 sound = pygame.mixer.Sound("Sounds/sound.wav")
@@ -318,7 +318,7 @@ while index_game < 6:
                     map.process_input(event.key)
                     process_ques(map, event.key)
                     if check_won(map):
-                        if level_next > 2:
+                        if level_next == 3:
                             next_level = False
                             done = False
                             while not done:
@@ -334,14 +334,15 @@ while index_game < 6:
                             map_input = init_map(0)
                             map = Map(map_input, ques_input)
                             done = True
-                        if next_level:
-                            map_input = init_map(level_next)
-                            map = Map(map_input, ques_input)
                         else:
-                            index_game = 2
-                            map_input = init_map(0)
-                            map = Map(map_input, ques_input)
-                            done = True
+                            if next_level:
+                                map_input = init_map(level_next)
+                                map = Map(map_input, ques_input)
+                            else:
+                                index_game = 2
+                                map_input = init_map(0)
+                                map = Map(map_input, ques_input)
+                                done = True
                     if check_lost(map):
                         if replay:
                             map_input = init_map(level_next)
