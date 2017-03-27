@@ -5,7 +5,7 @@ from views.image_all import *
 
 pygame.init()
 screen = pygame.display.set_mode([800, 600])
-pygame.display.set_caption("Prison Riot")
+pygame.display.set_caption("Police Riot")
 COLOR_BLACK = (0, 0, 0)
 COLOR_WHITE = (255, 255, 255)
 
